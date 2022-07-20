@@ -10,9 +10,30 @@ from pandas import DataFrame
 import csv, sys
 import streamlit as st
 from webdriver_manager.firefox import GeckoDriverManager
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.firefox import GeckoDriverManager
 
-driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+URL = "https://www.unibet.fr/sport/football/europa-league/europa-league-matchs"
+XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
+TIMEOUT = 20
 
+st.title("Test Selenium")
+st.markdown("You should see some random Football match text below in about 21 seconds")
+
+firefoxOptions = Options()
+firefoxOptions.add_argument("--headless")
+service = Service(GeckoDriverManager().install())
+driver = webdriver.Firefox(
+    options=firefoxOptions,
+    service=service,
+)
+driver.get(URL)
 
 non_bmp_map = dict.fromkeys(range(0x10000, sys.maxunicode + 1), 0xfffd)
 contact_link = []
