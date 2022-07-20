@@ -57,7 +57,7 @@ def main():
     st.write("number pass")
     #sys.exit()
     #driver = webdriver.Chrome(executable_path='chromedriver.exe')
-    #driver = webdriver.Firefox(executable_path="geckodriver.exe")
+    driver = webdriver.Firefox(executable_path="geckodriver.exe")
     #driver.get(url)
     driver.get('https://www.linkedin.com')
     time.sleep(1)
