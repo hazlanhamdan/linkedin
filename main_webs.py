@@ -19,21 +19,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.firefox import GeckoDriverManager
 
-URL = "https://www.unibet.fr/sport/football/europa-league/europa-league-matchs"
-XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
-TIMEOUT = 20
+#URL = "https://www.unibet.fr/sport/football/europa-league/europa-league-matchs"
+#XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
+#TIMEOUT = 20
 
 st.title("Test Selenium")
-st.markdown("You should see some random Football match text below in about 21 seconds")
+#st.markdown("You should see some random Football match text below in about 21 seconds")
 
-firefoxOptions = Options()
-firefoxOptions.add_argument("--headless")
-service = Service(GeckoDriverManager().install())
-driver = webdriver.Firefox(
-    options=firefoxOptions,
-    service=service,
-)
-driver.get(URL)
+
 
 non_bmp_map = dict.fromkeys(range(0x10000, sys.maxunicode + 1), 0xfffd)
 contact_link = []
@@ -78,7 +71,16 @@ def main():
     st.write("number pass")
     #sys.exit()
     #driver = webdriver.Chrome(executable_path='chromedriver.exe')
-    driver = webdriver.Firefox(executable_path="geckodriver.exe")
+    
+    firefoxOptions = Options()
+    firefoxOptions.add_argument("--headless")
+    service = Service(GeckoDriverManager().install())
+    driver = webdriver.Firefox(
+        options=firefoxOptions,
+        service=service,
+    )
+    #driver.get(URL)
+    #driver = webdriver.Firefox(executable_path="geckodriver.exe")
     #driver.get(url)
     driver.get('https://www.linkedin.com')
     time.sleep(1)
