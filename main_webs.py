@@ -41,35 +41,22 @@ contact_education = []
 key_words = []
 def main():
     
-    #print("Please key in your Linkedin User ID")
-    #usr = input()
     usr = st.text_input("Please key in your Linkedin User ID")
     if usr == None:
         return
-    st.write("user pass")
-    #usr = "hazlanhamdan89@gmail.com"
-    #print("Please key in your Linkedin Password")
+        
     pwd = st.text_input("Please key in your Linkedin Password", type='password')
     if pwd == None:
         return
-    st.write("pwd pass")
-    #pwd = input()
-    #pwd = "hazlan100189"
 
-      
-    print('Please key in your key word. (word and/or word and/or word ... etc)')
-    'data science and power BI or anaplan'
     words = st.text_input('Please key in your key word. (word and/or word and/or word ... etc)')
     if words == None:
         return
-    st.write("words pass")
     
     print("How many profile do you want to scrape?")
     number = st.number_input("How many profile do you want to scrape?")
     if number == 0.00:
         return
-    st.write("number pass")
-    #sys.exit()
     #driver = webdriver.Chrome(executable_path='chromedriver.exe')
     
     #firefoxOptions = Options()
