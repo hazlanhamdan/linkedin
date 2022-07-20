@@ -19,14 +19,20 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.firefox import GeckoDriverManager
 
-#URL = "https://www.unibet.fr/sport/football/europa-league/europa-league-matchs"
-#XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
-#TIMEOUT = 20
-
 st.title("Test Selenium")
 #st.markdown("You should see some random Football match text below in about 21 seconds")
 
+@st.experimental_singleton
+def installff():
+  os.system('sbase install geckodriver')
+  os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
 
+_ = installff()
+from selenium import webdriver
+from selenium.webdriver import FirefoxOptions
+opts = FirefoxOptions()
+opts.add_argument("--headless")
+driver = webdriver.Firefox(options=opts)
 
 non_bmp_map = dict.fromkeys(range(0x10000, sys.maxunicode + 1), 0xfffd)
 contact_link = []
@@ -59,15 +65,6 @@ def main():
         return
     #driver = webdriver.Chrome(executable_path='chromedriver.exe')
     
-    #firefoxOptions = Options()
-    #firefoxOptions.add_argument("--headless")
-    #service = Service(GeckoDriverManager().install())
-    firefoxOptions = Options()
-    firefoxOptions.add_argument("--headless")
-    driver = webdriver.Firefox(
-        options=firefoxOptions,
-        executable_path="/home/appuser/.conda/bin/geckodriver",
-    )
     #driver.get(URL)
     #driver = webdriver.Firefox(executable_path="geckodriver.exe")
     #driver.get(url)
