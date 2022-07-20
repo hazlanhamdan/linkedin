@@ -9,6 +9,9 @@ import pandas
 from pandas import DataFrame
 import csv, sys
 import streamlit as st
+from webdriver_manager.firefox import GeckoDriverManager
+
+driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
 
 
 non_bmp_map = dict.fromkeys(range(0x10000, sys.maxunicode + 1), 0xfffd)
@@ -54,7 +57,7 @@ def main():
     st.write("number pass")
     #sys.exit()
     #driver = webdriver.Chrome(executable_path='chromedriver.exe')
-    driver = webdriver.Firefox(executable_path="geckodriver.exe")
+    #driver = webdriver.Firefox(executable_path="geckodriver.exe")
     #driver.get(url)
     driver.get('https://www.linkedin.com')
     time.sleep(1)
