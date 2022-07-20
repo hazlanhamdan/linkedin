@@ -72,12 +72,14 @@ def main():
     #sys.exit()
     #driver = webdriver.Chrome(executable_path='chromedriver.exe')
     
+    #firefoxOptions = Options()
+    #firefoxOptions.add_argument("--headless")
+    #service = Service(GeckoDriverManager().install())
     firefoxOptions = Options()
     firefoxOptions.add_argument("--headless")
-    service = Service(GeckoDriverManager().install())
     driver = webdriver.Firefox(
         options=firefoxOptions,
-        service=service,
+        executable_path="/home/appuser/.conda/bin/geckodriver",
     )
     #driver.get(URL)
     #driver = webdriver.Firefox(executable_path="geckodriver.exe")
